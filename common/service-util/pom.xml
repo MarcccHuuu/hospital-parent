@@ -11,7 +11,7 @@
 
     <artifactId>service-util</artifactId>
     <packaging>jar</packaging>
-    <version>1.0</version>
+    <version>0.0.1-SNAPSHOT</version>
     <name>service-util</name>
     <description>service-util</description>
 

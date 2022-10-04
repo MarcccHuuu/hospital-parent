@@ -11,7 +11,7 @@
 
     <artifactId>common-util</artifactId>
     <packaging>jar</packaging>
-    <version>1.0</version>
+    <version>0.0.1-SNAPSHOT</version>
     <name>common-util</name>
     <description>common-util</description>
 
