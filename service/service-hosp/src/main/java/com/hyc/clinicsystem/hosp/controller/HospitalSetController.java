@@ -1,5 +1,6 @@
 package com.hyc.clinicsystem.hosp.controller;
 
+import com.hyc.clinicsystem.common.result.Result;
 import com.hyc.clinicsystem.hosp.service.HospitalSetService;
 import com.hyc.clinicsystem.model.hosp.HospitalSet;
 import io.swagger.annotations.Api;
@@ -21,15 +22,16 @@ public class HospitalSetController {
     // http://localhost:8201/admin/hosp/hospitalSet/findAll
     @ApiOperation(value = "获取所有医院设置")
     @GetMapping("findAll")
-    public List<HospitalSet> findAllHospitalSet() {
-        return hospitalSetService.list();
+    public Result findAllHospitalSet() {
+        Result<List<HospitalSet>> findAllListOK = Result.ok(hospitalSetService.list());
+        return findAllListOK;
     }
 
     // 逻辑删除医院设置
     @ApiOperation(value = "逻辑删除医院设置")
     @DeleteMapping("{id}")
-    public boolean removeHospitalSet(@PathVariable Long id) {
-        return hospitalSetService.removeById(id);
+    public Result removeHospitalSet(@PathVariable Long id) {
+        boolean flag = hospitalSetService.removeById(id);
+        return flag ? Result.ok() : Result.fail();
     }
-
 }
