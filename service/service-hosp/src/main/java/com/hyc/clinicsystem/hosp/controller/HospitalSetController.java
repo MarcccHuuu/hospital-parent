@@ -30,12 +30,6 @@ public class HospitalSetController {
     @ApiOperation(value = "获取所有医院设置")
     @GetMapping("findAll")
     public Result findAllHospitalSet() {
-        try {
-            // 模拟异常
-            int i = 1 / 0;
-        } catch (Exception e) {
-            throw new ClinicSysException("失败", 201); // 需要手动抛出异常
-        }
         List<HospitalSet> list = hospitalSetService.list();
         return Result.ok(list);
     }
