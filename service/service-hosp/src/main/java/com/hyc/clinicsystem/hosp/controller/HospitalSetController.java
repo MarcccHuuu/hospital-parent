@@ -2,6 +2,7 @@ package com.hyc.clinicsystem.hosp.controller;
 
 import com.alibaba.excel.util.StringUtils;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.hyc.clinicsystem.common.exception.ClinicSysException;
 import com.hyc.clinicsystem.common.result.Result;
 import com.hyc.clinicsystem.hosp.service.HospitalSetService;
 import com.hyc.clinicsystem.hosp.utils.MD5;
@@ -29,6 +30,12 @@ public class HospitalSetController {
     @ApiOperation(value = "获取所有医院设置")
     @GetMapping("findAll")
     public Result findAllHospitalSet() {
+        try {
+            // 模拟异常
+            int i = 1 / 0;
+        } catch (Exception e) {
+            throw new ClinicSysException("失败", 201); // 需要手动抛出异常
+        }
         List<HospitalSet> list = hospitalSetService.list();
         return Result.ok(list);
     }
