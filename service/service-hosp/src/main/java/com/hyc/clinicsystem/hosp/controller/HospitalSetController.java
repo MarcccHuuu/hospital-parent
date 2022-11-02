@@ -2,7 +2,6 @@ package com.hyc.clinicsystem.hosp.controller;
 
 import com.alibaba.excel.util.StringUtils;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.hyc.clinicsystem.common.exception.ClinicSysException;
 import com.hyc.clinicsystem.common.result.Result;
 import com.hyc.clinicsystem.hosp.service.HospitalSetService;
 import com.hyc.clinicsystem.hosp.utils.MD5;
@@ -19,6 +18,7 @@ import java.util.Random;
 
 @Api(tags = "医院设置管理")
 @RestController
+@CrossOrigin
 @RequestMapping("/admin/hosp/hospitalSet")
 public class HospitalSetController {
 
@@ -53,10 +53,10 @@ public class HospitalSetController {
         QueryWrapper<HospitalSet> wrapper = new QueryWrapper<>();
         String hosName = hospitalSetQueryVo.getHosname();
         String hosCode = hospitalSetQueryVo.getHoscode();
-        if (StringUtils.isEmpty(hosName)) {
+        if (!StringUtils.isEmpty(hosName)) {
             wrapper.like("hosname",hosName);
         }
-        if (StringUtils.isEmpty(hosCode)) {
+        if (!StringUtils.isEmpty(hosCode)) {
             wrapper.eq("hoscode", hosCode);
         }
         // 调用方法实现分页查询
